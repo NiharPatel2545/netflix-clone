@@ -17,12 +17,17 @@ const MovieSlider = ({ category }) => {
 	const formattedContentType = contentType === "movie" ? "Movies" : "TV Shows";
 
 	useEffect(() => {
-		const getContent = async () => {
-			const res = await axios.get(`/api/v1/${contentType}/${category}`);
-			setContent(res.data.content);
-		};
-
-		getContent();
+	  const getContent = async () => {
+	    try {
+	      const res = await axios.get(`/api/v1/${contentType}/${category}`);
+	      setContent(res.data.content || []);
+	    } catch (err) {
+	      console.error(`Error fetching ${category}:`, err.message);
+	      setContent([]); // fallback to empty slider
+	    }
+	  };
+  
+	  getContent();
 	}, [contentType, category]);
 
 	const scrollLeft = () => {
