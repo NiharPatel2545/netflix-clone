@@ -2,6 +2,8 @@
 
 ![Demo App](/frontend/public/screenshot-for-readme.png)
 
+Live Site: [https://netflix-clone-project-np.vercel.app](https://netflix-clone-project-np.vercel.app)
+
 About This Course:
 
 -   ⚛️ Tech Stack: React.js, Node.js, Express.js, MongoDB, Tailwind
