@@ -1,5 +1,8 @@
 import axios from "axios";
-import { ENV_VARS } from "../config/envVars.js";
+
+const axiosInstance = axios.create({
+  timeout: 5000,
+});
 
 export const fetchFromTMDB = async (url) => {
   const fullUrl = url.includes("?")
@@ -7,7 +10,7 @@ export const fetchFromTMDB = async (url) => {
     : `${url}?api_key=${ENV_VARS.TMDB_API_KEY}`;
 
   try {
-    const response = await axios.get(fullUrl);
+    const response = await axiosInstance.get(fullUrl);
     return response.data;
   } catch (err) {
     console.error("TMDB fetch error:", err.message);
